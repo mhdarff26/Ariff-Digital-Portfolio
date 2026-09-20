@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ariff Azri — Technical Game Developer & Visual Storyteller</title>
+  <meta name="description" content="Portfolio of Ariff Azri — game development, videography and photography.">
+
+  <!--
+    ============================================================
+    FONTS
+    Display face: "Big Shoulders Display" — condensed, industrial,
+    reads like film-poster type / lens markings. Used ONLY for
+    the hero headline and section numerals.
+    Body/UI face: "Inter" — neutral, highly legible at small sizes.
+    ============================================================
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       SITE HEADER / NAV
+       Sticky, minimal. Update the name text and links as needed.
+       ============================================================ -->
+  <header class="site-header" id="top">
+    <a href="#top" class="site-header__mark">ARIFF AZRI</a>
+    <nav class="site-header__nav" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       HERO
+       Full-bleed still image with a dark gradient scrim so the
+       headline stays readable over any photo.
+
+       TO REPLACE THE IMAGE:
+       - Swap the src below for your own photo or render. A wide,
+         high-resolution shot (2000px+) works best since it fills
+         the full viewport width.
+       - No "loading=lazy" here on purpose — this image is the
+         first thing visible on the page, so it should load
+         immediately rather than being deferred.
+       ============================================================ -->
+  <section class="hero">
+    <img class="hero__bg" src="images/Portfolio-Aripp.png" alt="" aria-hidden="true">
+
+    <div class="hero__scrim"></div>
+
+    <div class="hero__content">
+      <p class="hero__eyebrow">Digital Portfolio</p>
+      <h1 class="hero__headline">Ariff Azri</h1>
+      <p class="hero__tagline">Crafting Immersive 3D Worlds and Cinematic Visuals.</p>
+      <a href="#work" class="hero__cta">View the work</a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT
+       Two-column: bio copy on the left, a short focus list on the
+       right. Edit the paragraph text freely — the markup doesn't
+       need to change for text updates.
+       ============================================================ -->
+  <section class="about" id="about">
+    <div class="about__inner">
+      <div class="about__copy">
+        <span class="section-kicker">01 — About</span>
+        <h2>Two crafts, one eye for detail.</h2>
+        <p>
+          I'm a Multimedia Technology graduate from Universiti Malaysia
+          Sabah, Kampus Antarabangsa Labuan (UMSKAL), working across two
+          disciplines that share the same foundation: composition,
+          lighting, and pacing. By day I build and implemented game
+          blueprints, level progression, and the small systems that
+          make a space feel alive. Outside the engine, I pick up a camera
+          to shoot and edit narrative video and photography, carrying
+          the same cinematic instinct from the viewport to the viewfinder.
+        </p>
+        <p>
+          Whatever the medium, the goal is the same: make the
+          viewer forget they're looking at a screen.
+        </p>
+      </div>
+
+      <ul class="about__focus">
+        <li>
+          <h3><u>Game Development</u></h3>
+          <p>Unreal Engine 5 level designer, and blueprint-driven mechanics.</p>
+        </li>
+        <li>
+          <h3><u>Videography</u></h3>
+          <p>Colour-graded short-form and narrative work, shot and edited end to end.</p>
+        </li>
+        <li>
+          <h3><u>Photography</u></h3>
+          <p>DSLR-based portrait and location work with a focus on natural light.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PORTFOLIO / WORK
+       Filter buttons control which .project-card elements are
+       visible via script.js (matches data-category to the active
+       filter). Add new projects by duplicating the marked block
+       below — no JS changes required.
+       ============================================================ -->
+  <section class="work" id="work">
+    <div class="work__header">
+      <span class="section-kicker">02 — Selected Work</span>
+      <h2>Projects</h2>
+    </div>
+
+    <!-- Filter controls: data-filter values must match the
+         data-category values used on each .project-card below. -->
+    <div class="work__filters" role="group" aria-label="Filter projects by category">
+      <button type="button" class="filter-btn is-active" data-filter="all">All Work</button>
+      <button type="button" class="filter-btn" data-filter="game-dev">Game Development &amp; 3D Art</button>
+      <button type="button" class="filter-btn" data-filter="video-photo">Videography &amp; Photography</button>
+    </div>
+
+    <div class="work__grid" id="projectGrid">
+
+      <!-- ==========================================================
+           COPY THIS BLOCK TO ADD A NEW PROJECT
+           1. Set data-category to "game-dev" or "video-photo"
+              (this is what the filter buttons match against).
+           2. Replace the image src, alt text, title, and blurb.
+           3. Point the link at a live build, video, or case study.
+           ========================================================== -->
+      <article class="project-card" data-category="game-dev">
+        <div class="project-card__media">
+          <img src="images/2.png" alt="Screenshot of an original-horror Unreal Engine" loading="lazy">
+        </div>
+        <div class="project-card__body">
+          <span class="project-card__tag">Game Development</span>
+          <h3>Ngilai — In Development</h3>
+          <p>First-person horror level built in Unreal Engine 5, showcasing my work in game blueprints and UI implementation.</p>
+          <a href="#" class="project-card__link">View project →</a>
+        </div>
+      </article>
+      <!-- END COPY BLOCK -->
+
+      <!-- Duplicate the block above for each additional project.
+           Examples below show the pattern for both categories. -->
+
+      <article class="project-card" data-category="video-photo">
+        <div class="project-card__media">
+          <img src="images/3.png" alt="Still frame from a colour-graded short film" loading="lazy">
+        </div>
+        <div class="project-card__body">
+          <span class="project-card__tag">Videography</span>
+          <h3>Video Showcase</h3>
+          <p>Narrative short edited and graded in CapCut and Filmora, indoor and outdoor.</p>
+          <a href="#" class="project-card__link">View project →</a>
+        </div>
+      </article>
+
+      <article class="project-card" data-category="video-photo">
+        <div class="project-card__media">
+          <img src="images/1.jpg" alt="Portrait photograph shot with natural light" loading="lazy">
+        </div>
+        <div class="project-card__body">
+          <span class="project-card__tag">Photography</span>
+          <h3>My Point of View</h3>
+          <p>A natural-light portrait set shot on phone and DSLR, edited for a consistent cinematic tone.</p>
+          <a href="#" class="project-card__link">View project →</a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Shown by script.js when a filter has zero matching cards -->
+    <p class="work__empty" id="emptyState" hidden>No projects in this category yet.</p>
+  </section>
+
+  <!-- ============================================================
+       SKILLS MATRIX
+       Each tag shows a software logo stacked above its name.
+
+       TO ADD/REPLACE A LOGO:
+       1. Save the logo as a small square SVG or PNG (transparent
+          background looks best), and keep them all in one folder
+          (either assets/icons/ or images/ — just be consistent so
+          nothing 404s).
+          Suggested official sources:
+            - Unreal Engine: unrealengine.com/branding
+            - Filmora / CapCut: their respective press/brand kit pages
+            - BandLab, Adobe Lightroom, GitHub Desktop, Audacity:
+              each brand's own press/branding page
+          Only use logos under a licence that permits this (most
+          "as used" software logos are fine for a portfolio credit,
+          but always check the brand's usage guidelines).
+       2. Point the <img src="..."> at that file.
+       3. Keep the visible text label — it doubles as the alt-text
+          fallback and keeps the tag readable if an image is missing.
+       ============================================================ -->
+  <section class="skills" id="skills">
+    <span class="section-kicker">03 — Toolset</span>
+    <h2>Software Used</h2>
+
+    <ul class="skills__list">
+      <li class="skill-tag">
+        <img class="skill-tag__icon" src="images/unreal-engine.png" alt="" loading="lazy">
+        Unreal Engine
+      </li>
+      <li class="skill-tag">
+        <img class="skill-tag__icon" src="images/filmora.png" alt="" loading="lazy">
+        Filmora
+      </li>
+      <li class="skill-tag">
+        <img class="skill-tag__icon" src="images/capcut.png" alt="" loading="lazy">
+        CapCut
+      </li>
+      <li class="skill-tag">
+        <img class="skill-tag__icon" src="images/bandlab.png" alt="" loading="lazy">
+        BandLab
+      </li>
+      <li class="skill-tag">
+        <img class="skill-tag__icon" src="images/adobe-lightroom.png" alt="" loading="lazy">
+        Adobe Lightroom
+      </li>
+      <li class="skill-tag">
+        <img class="skill-tag__icon" src="images/github-desktop.jpg" alt="" loading="lazy">
+        GitHub Desktop
+      </li>
+      <li class="skill-tag">
+        <img class="skill-tag__icon" src="images/audacity.png" alt="" loading="lazy">
+        Audacity
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============================================================
+       CONTACT
+       Front-end only — no backend wired up. The form currently
+       shows a confirmation message via script.js. Point the
+       action/method at a form service (Formspree, Netlify Forms,
+       etc.) or your own endpoint when you're ready to go live.
+       ============================================================ -->
+  <section class="contact" id="contact">
+    <div class="contact__inner">
+      <div class="contact__intro">
+        <span class="section-kicker">04 — Contact</span>
+        <h2>Let's work together.</h2>
+        <p>Open to game dev collaborations, freelance video work, and photography bookings.</p>
+
+        <ul class="contact__links">
+          <li><a href="https://LinkedIn.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://github.com/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <!-- Add further social links as extra <li> items -->
+        </ul>
+
+        <!-- Replace the href with the path to your actual CV file -->
+        <a href="assets/cv.pdf" class="contact__cv" download>Download CV</a>
+      </div>
+
+      <form class="contact__form" id="contactForm" novalidate>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send message</button>
+        <p class="contact__form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Ariff Azri. Still in Development.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
