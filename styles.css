@@ -878,3 +878,47 @@ section > h2,
 .card-slideshow.has-single-slide .card-slideshow__dots {
   display: none;
 }
+
+/* ================================================================
+   MOBILE MENU SETTINGS
+   ================================================================ */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+@media (max-width: 639px) {
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .site-header__nav {
+    display: flex; /* Changed from none */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--color-bg-header);
+    padding: 1.5rem var(--gutter);
+    flex-direction: column;
+    border-bottom: 1px solid var(--color-border);
+    backdrop-filter: blur(8px);
+
+    /* Animation setup */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-15px); /* Starts slightly shifted up */
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), visibility 0.3s;
+  }
+
+  .site-header__nav.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); /* Slides into final place */
+  }
+}

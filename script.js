@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   setFooterYear();
   initCardSlideshows();
+  initMobileMenu();
 });
 
 /* ----------------------------------------------------------------
@@ -151,7 +152,7 @@ function initCardSlideshows() {
     });
 
     function goToSlide(index) {
-      current = (index + slides.length) % slides.length; // wraps both directions
+      current = (index + slides.length) % slides.length;
       track.style.transform = `translateX(-${current * 100}%)`;
       dots.forEach((dot, i) => dot.classList.toggle('is-active', i === current));
     }
@@ -174,4 +175,15 @@ function initCardSlideshows() {
     goToSlide(0);
     startAutoAdvance();
   }
+}
+
+function initMobileMenu() {
+  const toggle = document.querySelector('.mobile-menu-toggle');
+  const nav = document.querySelector('.site-header__nav');
+
+  if (!toggle || !nav) return;
+
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('is-open');
+  });
 }
