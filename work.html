@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work — Ariff Azri</title>
+  <meta name="description" content="Full project gallery for Ariff Azri — game development &amp; 3D art, videography and photography.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       SITE HEADER / NAV
+       Same header as index.html. Because this page lives at the
+       site root alongside index.html, links back to homepage
+       sections use "index.html#..." rather than a bare "#...".
+       ============================================================ -->
+  <header class="site-header">
+    <a href="index.html" class="site-header__mark">ARIFF AZRI</a>
+    <nav class="site-header__nav" aria-label="Primary">
+      <a href="about.html">About</a>
+      <a href="work.html">Work</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       PAGE INTRO
+       Full-bleed background image (like the homepage hero) behind
+       the title, with a scrim for legibility.
+
+       TO ADD YOUR IMAGE:
+       Replace the src below once you have a background shot picked
+       out — a wide render or graded still works well here.
+       ============================================================ -->
+  <div class="page-hero">
+    <img class="page-hero__bg" src="images/main-background.svg" alt="" aria-hidden="true">
+    <div class="page-hero__scrim"></div>
+
+    <div class="page-hero__inner">
+      <div class="page-hero__text">
+        <a href="index.html" class="page-hero__back">← Back to home</a>
+        <h1>Full Work Gallery</h1>
+        <p>
+          Every project, organised by category. "View project" links on
+          the homepage jump straight into the matching section below.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       GAME DEVELOPMENT & 3D ART
+       This id ("game-dev") is what "work.html#game-dev" links to —
+       keep it unchanged if you rename the section.
+
+       COPY A .project-card BLOCK TO ADD A NEW PROJECT HERE. Each
+       card's media area is now its own mini slideshow (see the
+       "CARD SLIDESHOW" comment inside the first card below for how
+       to add/remove slides). Controlled by initCardSlideshows() in
+       script.js — fully data-driven, no JS changes needed.
+       ============================================================ -->
+  <section class="page-section work-category" id="game-dev">
+    <div class="work-category__header">
+      <span class="section-kicker">Category</span>
+      <h2>Game Development &amp; 3D Art</h2>
+    </div>
+
+    <div class="work__grid">
+
+      <!-- COPY THIS BLOCK TO ADD A NEW GAME DEV / 3D ART PROJECT -->
+      <article class="project-card">
+        <!-- CARD SLIDESHOW: copy a .card-slideshow__slide <img> to
+             add another image to this project, or delete extras
+             down to a single slide (arrows/dots hide automatically
+             when there's only one). -->
+        <div class="project-card__media card-slideshow">
+          <div class="card-slideshow__track">
+            <img class="card-slideshow__slide" src="images/2.png" alt="Screenshot of an original-horror Unreal Engine" loading="lazy">
+            <img class="card-slideshow__slide" src="images/ngilai-2.jpg" alt="Ngilai — level layout screenshot" loading="lazy">
+            <img class="card-slideshow__slide" src="images/ngilai-3.jpg" alt="Ngilai — in-engine lighting pass" loading="lazy">
+          </div>
+          <button type="button" class="card-slideshow__nav card-slideshow__nav--prev" aria-label="Previous image">‹</button>
+          <button type="button" class="card-slideshow__nav card-slideshow__nav--next" aria-label="Next image">›</button>
+          <div class="card-slideshow__dots" role="tablist" aria-label="Slide navigation"></div>
+        </div>
+        <div class="project-card__body">
+          <span class="project-card__tag">Game Development</span>
+          <h3>Ngilai — In Development</h3>
+          <p>First-person horror level built in Unreal Engine 5, showcasing my work in game blueprints and UI implementation.</p>
+        </div>
+      </article>
+      <!-- END COPY BLOCK -->
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       VIDEOGRAPHY & PHOTOGRAPHY
+       This id ("video-photo") is what "work.html#video-photo" links
+       to — keep it unchanged if you rename the section.
+       ============================================================ -->
+  <section class="page-section work-category" id="video-photo">
+    <div class="work-category__header">
+      <span class="section-kicker">Category</span>
+      <h2>Videography &amp; Photography</h2>
+    </div>
+
+    <div class="work__grid">
+
+      <!-- COPY THIS BLOCK TO ADD A NEW VIDEO / PHOTO PROJECT -->
+      <article class="project-card">
+        <div class="project-card__media card-slideshow">
+          <div class="card-slideshow__track">
+            <img class="card-slideshow__slide" src="images/3.png" alt="Still frame from a colour-graded short film" loading="lazy">
+            <img class="card-slideshow__slide" src="images/video-2.jpg" alt="Behind-the-scenes on set" loading="lazy">
+            <img class="card-slideshow__slide" src="images/video-3.jpg" alt="Another graded still from the short" loading="lazy">
+          </div>
+          <button type="button" class="card-slideshow__nav card-slideshow__nav--prev" aria-label="Previous image">‹</button>
+          <button type="button" class="card-slideshow__nav card-slideshow__nav--next" aria-label="Next image">›</button>
+          <div class="card-slideshow__dots" role="tablist" aria-label="Slide navigation"></div>
+        </div>
+        <div class="project-card__body">
+          <span class="project-card__tag">Videography</span>
+          <h3>Video Showcase</h3>
+          <p>Narrative short edited and graded in CapCut and Filmora, indoor and outdoor.</p>
+        </div>
+      </article>
+      <!-- END COPY BLOCK -->
+
+      <article class="project-card">
+        <div class="project-card__media card-slideshow">
+          <div class="card-slideshow__track">
+            <img class="card-slideshow__slide" src="images/1.jpg" alt="Portrait photograph shot with natural light" loading="lazy">
+            <img class="card-slideshow__slide" src="images/photo-2.jpg" alt="Second portrait from the same set" loading="lazy">
+            <img class="card-slideshow__slide" src="images/photo-3.jpg" alt="Third portrait from the same set" loading="lazy">
+          </div>
+          <button type="button" class="card-slideshow__nav card-slideshow__nav--prev" aria-label="Previous image">‹</button>
+          <button type="button" class="card-slideshow__nav card-slideshow__nav--next" aria-label="Next image">›</button>
+          <div class="card-slideshow__dots" role="tablist" aria-label="Slide navigation"></div>
+        </div>
+        <div class="project-card__body">
+          <span class="project-card__tag">Photography</span>
+          <h3>My Point of View</h3>
+          <p>A natural-light portrait set shot on phone and DSLR, edited for a consistent cinematic tone.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Ariff Azri. Still in Development.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

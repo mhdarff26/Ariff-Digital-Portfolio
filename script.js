@@ -1,9 +1,10 @@
 /* ================================================================
    PORTFOLIO SCRIPT
-   Three independent features, each in its own function:
-     1. Project filtering (Work section)
+   Four independent features, each in its own function:
+     1. Project filtering (homepage Work section)
      2. Contact form handling (front-end only, no backend)
      3. Footer year auto-update
+     4. Per-project-card slideshows (work.html)
    Nothing here needs to change when you add new project cards —
    only when you add new FILTER CATEGORIES (see below).
    ================================================================ */
@@ -12,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initProjectFilter();
   initContactForm();
   setFooterYear();
+  initCardSlideshows();
 });
 
 /* ----------------------------------------------------------------
@@ -99,5 +101,77 @@ function setFooterYear() {
   const yearEl = document.getElementById('year');
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
+  }
+}
+
+/* ----------------------------------------------------------------
+   4. PER-PROJECT-CARD SLIDESHOWS (work.html)
+   Every element with class "card-slideshow" is set up
+   independently — each project card can have its own image count,
+   and adding/removing a .card-slideshow__slide <img> in the HTML
+   needs no changes here. A card with only one slide gets its
+   controls hidden entirely rather than showing useless arrows/dots.
+
+   Auto-advances every 5 seconds; pauses while that specific card
+   is hovered or focused, so browsing one card doesn't get
+   interrupted, but other cards keep advancing on their own.
+---------------------------------------------------------------- */
+function initCardSlideshows() {
+  const AUTO_ADVANCE_MS = 5000;
+
+  document.querySelectorAll('.card-slideshow').forEach(setupOneSlideshow);
+
+  function setupOneSlideshow(root) {
+    const track = root.querySelector('.card-slideshow__track');
+    const slides = root.querySelectorAll('.card-slideshow__slide');
+    const dotsContainer = root.querySelector('.card-slideshow__dots');
+    const prevBtn = root.querySelector('.card-slideshow__nav--prev');
+    const nextBtn = root.querySelector('.card-slideshow__nav--next');
+
+    if (!track || !slides.length) return;
+
+    // Single-image card: nothing to slide between, so hide the
+    // controls and stop here.
+    if (slides.length === 1) {
+      root.classList.add('has-single-slide');
+      return;
+    }
+
+    let current = 0;
+    let autoTimer = null;
+
+    const dots = Array.from(slides).map((_, index) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'card-slideshow__dot';
+      dot.setAttribute('aria-label', `Go to image ${index + 1}`);
+      dot.addEventListener('click', () => goToSlide(index));
+      dotsContainer.appendChild(dot);
+      return dot;
+    });
+
+    function goToSlide(index) {
+      current = (index + slides.length) % slides.length; // wraps both directions
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((dot, i) => dot.classList.toggle('is-active', i === current));
+    }
+
+    function startAutoAdvance() {
+      stopAutoAdvance();
+      autoTimer = setInterval(() => goToSlide(current + 1), AUTO_ADVANCE_MS);
+    }
+
+    function stopAutoAdvance() {
+      if (autoTimer) clearInterval(autoTimer);
+    }
+
+    prevBtn.addEventListener('click', () => { goToSlide(current - 1); startAutoAdvance(); });
+    nextBtn.addEventListener('click', () => { goToSlide(current + 1); startAutoAdvance(); });
+
+    root.addEventListener('mouseenter', stopAutoAdvance);
+    root.addEventListener('mouseleave', startAutoAdvance);
+
+    goToSlide(0);
+    startAutoAdvance();
   }
 }

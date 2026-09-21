@@ -30,8 +30,8 @@
   <header class="site-header" id="top">
     <a href="#top" class="site-header__mark">ARIFF AZRI</a>
     <nav class="site-header__nav" aria-label="Primary">
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
+      <a href="about.html">About</a>
+      <a href="work.html">Work</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -51,7 +51,7 @@
          immediately rather than being deferred.
        ============================================================ -->
   <section class="hero">
-    <img class="hero__bg" src="images/Portfolio-Aripp.png" alt="" aria-hidden="true">
+    <img class="hero__bg" src="images/Portfolio-Aripp.svg" alt="" aria-hidden="true">
 
     <div class="hero__scrim"></div>
 
@@ -64,59 +64,21 @@
   </section>
 
   <!-- ============================================================
-       ABOUT
-       Two-column: bio copy on the left, a short focus list on the
-       right. Edit the paragraph text freely — the markup doesn't
-       need to change for text updates.
-       ============================================================ -->
-  <section class="about" id="about">
-    <div class="about__inner">
-      <div class="about__copy">
-        <span class="section-kicker">01 — About</span>
-        <h2>Two crafts, one eye for detail.</h2>
-        <p>
-          I'm a Multimedia Technology graduate from Universiti Malaysia
-          Sabah, Kampus Antarabangsa Labuan (UMSKAL), working across two
-          disciplines that share the same foundation: composition,
-          lighting, and pacing. By day I build and implemented game
-          blueprints, level progression, and the small systems that
-          make a space feel alive. Outside the engine, I pick up a camera
-          to shoot and edit narrative video and photography, carrying
-          the same cinematic instinct from the viewport to the viewfinder.
-        </p>
-        <p>
-          Whatever the medium, the goal is the same: make the
-          viewer forget they're looking at a screen.
-        </p>
-      </div>
-
-      <ul class="about__focus">
-        <li>
-          <h3><u>Game Development</u></h3>
-          <p>Unreal Engine 5 level designer, and blueprint-driven mechanics.</p>
-        </li>
-        <li>
-          <h3><u>Videography</u></h3>
-          <p>Colour-graded short-form and narrative work, shot and edited end to end.</p>
-        </li>
-        <li>
-          <h3><u>Photography</u></h3>
-          <p>DSLR-based portrait and location work with a focus on natural light.</p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ============================================================
        PORTFOLIO / WORK
        Filter buttons control which .project-card elements are
        visible via script.js (matches data-category to the active
        filter). Add new projects by duplicating the marked block
        below — no JS changes required.
+
+       "View project" links point at work.html, deep-linking to the
+       matching section there (#game-dev or #video-photo) so a
+       visitor lands directly on that category instead of the top
+       of the page. Keep each link's anchor matching its card's
+       data-category.
        ============================================================ -->
   <section class="work" id="work">
     <div class="work__header">
-      <span class="section-kicker">02 — Selected Work</span>
+      <span class="section-kicker">01 — Selected Work</span>
       <h2>Projects</h2>
     </div>
 
@@ -124,7 +86,7 @@
          data-category values used on each .project-card below. -->
     <div class="work__filters" role="group" aria-label="Filter projects by category">
       <button type="button" class="filter-btn is-active" data-filter="all">All Work</button>
-      <button type="button" class="filter-btn" data-filter="game-dev">Game Development &amp; 3D Art</button>
+      <button type="button" class="filter-btn" data-filter="game-dev">Game Development</button>
       <button type="button" class="filter-btn" data-filter="video-photo">Videography &amp; Photography</button>
     </div>
 
@@ -145,7 +107,7 @@
           <span class="project-card__tag">Game Development</span>
           <h3>Ngilai — In Development</h3>
           <p>First-person horror level built in Unreal Engine 5, showcasing my work in game blueprints and UI implementation.</p>
-          <a href="#" class="project-card__link">View project →</a>
+          <a href="work.html#game-dev" class="project-card__link">View project →</a>
         </div>
       </article>
       <!-- END COPY BLOCK -->
@@ -161,7 +123,7 @@
           <span class="project-card__tag">Videography</span>
           <h3>Video Showcase</h3>
           <p>Narrative short edited and graded in CapCut and Filmora, indoor and outdoor.</p>
-          <a href="#" class="project-card__link">View project →</a>
+          <a href="work.html#video-photo" class="project-card__link">View project →</a>
         </div>
       </article>
 
@@ -173,7 +135,7 @@
           <span class="project-card__tag">Photography</span>
           <h3>My Point of View</h3>
           <p>A natural-light portrait set shot on phone and DSLR, edited for a consistent cinematic tone.</p>
-          <a href="#" class="project-card__link">View project →</a>
+          <a href="work.html#video-photo" class="project-card__link">View project →</a>
         </div>
       </article>
 
@@ -205,7 +167,7 @@
           fallback and keeps the tag readable if an image is missing.
        ============================================================ -->
   <section class="skills" id="skills">
-    <span class="section-kicker">03 — Toolset</span>
+    <span class="section-kicker">02 — Toolset</span>
     <h2>Software Used</h2>
 
     <ul class="skills__list">
@@ -250,7 +212,7 @@
   <section class="contact" id="contact">
     <div class="contact__inner">
       <div class="contact__intro">
-        <span class="section-kicker">04 — Contact</span>
+        <span class="section-kicker">03 — Contact</span>
         <h2>Let's work together.</h2>
         <p>Open to game dev collaborations, freelance video work, and photography bookings.</p>
 

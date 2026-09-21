@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Ariff Azri</title>
+  <meta name="description" content="About Ariff Azri — education, events, and involvement in game development, videography and photography.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       SITE HEADER / NAV
+       Same header as index.html. Because this page lives at the
+       site root alongside index.html, links back to homepage
+       sections use "index.html#..." rather than a bare "#...".
+       ============================================================ -->
+  <header class="site-header">
+    <a href="index.html" class="site-header__mark">ARIFF AZRI</a>
+    <nav class="site-header__nav" aria-label="Primary">
+      <a href="about.html">About</a>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       PAGE INTRO
+       Full-bleed background image (like the homepage hero) sits
+       behind everything, with a scrim for legibility. The heading
+       and intro text sit on the left; a formal portrait sits on
+       the right on wider screens (stacks below on mobile).
+
+       TO ADD YOUR IMAGES:
+       - page-hero__bg: a wide background/atmosphere shot. Replace
+         the src below once you have one.
+       - page-hero__portrait: a formal headshot/photo of yourself.
+         Replace the src in the <img> further down.
+       ============================================================ -->
+  <div class="page-hero">
+    <img class="page-hero__bg" src="images/main-background.svg" alt="" aria-hidden="true">
+    <div class="page-hero__scrim"></div>
+
+    <div class="page-hero__inner">
+      <div class="page-hero__text">
+        <a href="index.html" class="page-hero__back">← Back to home</a>
+        <h1>About Me</h1>
+        <p>
+          A closer look at my background, education, and the events
+          and programmes that have shaped how I work.
+        </p>
+      </div>
+
+      <div class="page-hero__portrait">
+        <img src="images/formal.jpg" alt="Formal portrait of Ariff Azri" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       BACKGROUND / BIO
+       Two-column: photo on the left, bio copy on the right.
+       Edit the paragraph text freely — the markup doesn't need to
+       change for text updates.
+
+       TO ADD YOUR IMAGE:
+       Replace the src in the <img> below.
+       ============================================================ -->
+  <section class="page-section">
+    <div class="about-split">
+      <div class="about-split__media">
+        <img src="images/camera.jpg" alt="" loading="lazy">
+      </div>
+
+      <div class="about-split__text">
+        <span class="section-kicker">Background</span>
+        <h2>Two crafts, one eye for detail.</h2>
+        <p class="page-section__lede">
+        <p class="page-section__lede">
+          I'm a Multimedia Technology graduate from Universiti Malaysia
+          Sabah, Kampus Antarabangsa Labuan (UMSKAL), working across two
+          disciplines that share the same foundation: composition,
+          lighting, and pacing. By day I build and implement game
+          blueprints, level progression, and the small systems that
+          make a space feel alive. Outside the engine, I pick up a camera
+          to shoot and edit narrative video and photography, carrying
+          the same cinematic instinct from the viewport to the viewfinder.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       EDUCATION
+       TO ADD A DEGREE / QUALIFICATION:
+       Copy one <div class="edu-item"> block and edit the meta line,
+       field of study, university name, and description.
+       ============================================================ -->
+  <section class="page-section">
+    <span class="section-kicker">Education</span>
+    <h2>Studies</h2>
+
+    <div class="edu-list">
+
+      <!-- COPY THIS BLOCK FOR A NEW EDUCATION ENTRY -->
+      <div class="edu-item">
+        <p class="edu-item__meta">Bachelor of Information Technology with Honours</p>
+        <h3>Multimedia Technology</h3>
+        <p class="edu-item__university">Universiti Malaysia Sabah Kampus Antarabangsa Labuan (UMSKAL)</p>
+        <p>Developed and focused on coding usage in C++, creating interactive media such as Augmented Reality (AR) and website development, real-time 3D creation, and digital video production.</p>
+      </div>
+      <!-- END COPY BLOCK -->
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       EVENTS & INVOLVEMENT
+       Programmes, workshops, and competitions attended. Each card
+       shows a photo above its title.
+
+       TO ADD A NEW ENTRY:
+       Copy one .involvement-card block and edit the image, meta
+       line (year/type), title, and description.
+       ============================================================ -->
+  <section class="page-section">
+    <span class="section-kicker">Events &amp; Involvement</span>
+    <h2>Where I've shown up</h2>
+
+    <div class="involvement-grid">
+
+      <!-- COPY THIS BLOCK FOR A NEW EVENT/PROGRAMME -->
+      <div class="involvement-card">
+        <div class="involvement-card__media">
+          <img src="images/event-k-youth.jpg" alt="K-Youth Nurture Programme" loading="lazy">
+        </div>
+        <div class="involvement-card__body">
+          <p class="involvement-card__meta">Programme</p>
+          <h3>K-Youth Nurture Programme</h3>
+          <p>Participated in this youth development programme, building skills and connections relevant to my creative and technical work.</p>
+        </div>
+      </div>
+      <!-- END COPY BLOCK -->
+
+      <!-- Placeholder — replace with a real event, or delete this
+           card if you don't have another one to add yet. -->
+      <div class="involvement-card">
+        <div class="involvement-card__media">
+          <img src="images/event-placeholder.jpg" alt="" loading="lazy">
+        </div>
+        <div class="involvement-card__body">
+          <p class="involvement-card__meta">Workshop / Field Experience</p>
+          <h3>Add another event here</h3>
+          <p>Swap this in for a competition, workshop, internship, or any hands-on experience related to game dev, video, or photography.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Ariff Azri. Still in Development.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -31,6 +31,18 @@
 
   /* Motion */
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Hero background image adjustment — tweak these two instead of
+     editing the image file itself.
+     --hero-bg-position: which part of the photo stays visible
+       when it's cropped to fill the section. Any CSS background-
+       position value works: "center", "center top", "30% 60%",
+       "left center", etc.
+     --hero-bg-zoom: 1 = no zoom. Above 1 zooms in (crops in
+       tighter); values above ~1.3 start losing quality on
+       lower-resolution photos. */
+  --hero-bg-position: center center;
+  --hero-bg-zoom: 1;
 }
 
 /* ================================================================
@@ -155,7 +167,10 @@ section > h2,
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;   /* fills the section without distorting the photo */
+  object-fit: cover;                       /* fills the section without distorting the photo */
+  object-position: var(--hero-bg-position); /* which part of the photo is kept in frame */
+  transform: scale(var(--hero-bg-zoom));    /* zoom in/out on the photo; .hero's overflow:hidden clips the excess */
+  transform-origin: center;
   z-index: 0;
 }
 
@@ -166,6 +181,19 @@ section > h2,
   z-index: 1;
   background:
     linear-gradient(180deg, rgba(30,58,44,0.35) 0%, rgba(30,58,44,0.55) 55%, rgba(30,58,44,0.92) 100%);
+}
+
+/* On phones and tall tablets, the section is much narrower/taller
+   relative to the photo, so "cover" crops in tighter and can push
+   a subject's face out of frame. Override the two variables here —
+   independently of the desktop values above — to re-centre the
+   crop for narrow screens. Adjust the percentages to match where
+   the subject actually sits in your photo. */
+@media (max-width: 700px) {
+  :root {
+    --hero-bg-position: center 15%;
+    --hero-bg-zoom: 1;
+  }
 }
 
 .hero__content {
@@ -519,4 +547,334 @@ section > h2,
   border-top: 1px solid var(--color-border);
   color: var(--color-text-muted);
   font-size: 0.85rem;
+}
+
+/* ================================================================
+   ABOUT & WORK PAGES ONLY
+   Everything below is used exclusively by about.html and work.html.
+   Nothing here touches homepage (index.html) styling — it's kept
+   separate so the two systems don't interfere with each other.
+   ================================================================ */
+
+/* Full-bleed banner behind the page title on a subpage — same
+   background-image + scrim pattern as the homepage hero, just
+   shorter. The image is purely decorative until a real one is
+   added, so it's positioned absolute behind everything else. */
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.page-hero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(30, 58, 44, 0.82);
+}
+
+.page-hero__inner {
+  position: relative;
+  z-index: 2;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 3rem var(--gutter) 2.5rem;
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+/* Portrait column only exists on pages that include it (about.html);
+   on pages without a .page-hero__portrait this simply has one column. */
+@media (min-width: 800px) {
+  .page-hero__inner:has(.page-hero__portrait) {
+    grid-template-columns: 1.4fr 1fr;
+  }
+}
+
+.page-hero__back {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+  transition: color 0.2s var(--ease);
+}
+
+.page-hero__back:hover { color: var(--color-accent); }
+
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 6vw, 4rem);
+}
+
+.page-hero__text p {
+  color: var(--color-text-muted);
+  max-width: 60ch;
+  margin-top: 0.75rem;
+}
+
+/* Formal portrait shown beside the About Me heading */
+.page-hero__portrait img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+}
+
+/* Shared wrapper for subpage content sections, matching the
+   homepage's section padding/width rhythm. */
+.page-section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 4rem var(--gutter);
+}
+
+.page-section__lede {
+  color: var(--color-text-muted);
+  max-width: 62ch;
+}
+
+.page-section + .page-section {
+  border-top: 1px solid var(--color-border);
+}
+
+/* ----------------------------------------------------------------
+   ABOUT PAGE: Background/bio split — image on the left, copy on
+   the right (desktop). Stacks image-above-text on mobile since
+   that's the natural document order below.
+---------------------------------------------------------------- */
+.about-split {
+  display: grid;
+  gap: 2rem;
+}
+
+.about-split__media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+}
+
+@media (min-width: 800px) {
+  .about-split {
+    grid-template-columns: 1fr 1.3fr;
+    align-items: center;
+  }
+}
+
+/* ----------------------------------------------------------------
+   ABOUT PAGE: education list
+---------------------------------------------------------------- */
+.edu-list {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.edu-item {
+  border-left: 2px solid var(--color-accent);
+  padding-left: 1.25rem;
+}
+
+.edu-item__meta {
+  font-size: 0.8rem;
+  color: var(--color-accent-2);
+  margin-bottom: 0.3rem;
+}
+
+.edu-item h3 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 0.3rem;
+}
+
+/* University/institution name — set apart from the field of study
+   above it and the description below it */
+.edu-item__university {
+  color: var(--color-accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.edu-item p {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+/* ----------------------------------------------------------------
+   ABOUT PAGE: involvement / events grid
+   (e.g. programmes, workshops, competitions attended)
+   Media/body split, same pattern as .project-card, so a photo
+   sits above each event's title.
+---------------------------------------------------------------- */
+.involvement-grid {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .involvement-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.involvement-card {
+  background: var(--color-bg-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.involvement-card__media {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #000;
+}
+
+.involvement-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.involvement-card__body {
+  padding: 1.25rem;
+}
+
+.involvement-card__meta {
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  margin-bottom: 0.4rem;
+}
+
+.involvement-card h3 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.involvement-card p {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* ----------------------------------------------------------------
+   WORK PAGE: category sections
+   Reuses .work__grid / .project-card from the homepage so cards
+   look identical in both places — only this wrapper is new.
+---------------------------------------------------------------- */
+.work-category {
+  scroll-margin-top: 5.5rem; /* keeps the sticky header from covering the anchor target */
+}
+
+.work-category__header {
+  margin-bottom: 1.5rem;
+}
+
+.work-category__header h2 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+}
+
+/* ----------------------------------------------------------------
+   WORK PAGE: per-project-card slideshow
+   Sits inside .project-card__media — reuses that element's
+   aspect-ratio/overflow/background, this just adds the slider
+   mechanics on top. Controlled by initCardSlideshows() in
+   script.js, which sets up every .card-slideshow on the page
+   independently.
+---------------------------------------------------------------- */
+.card-slideshow {
+  position: relative;
+}
+
+.card-slideshow__track {
+  display: flex;
+  height: 100%;
+  /* script.js sets this via inline transform to move between slides */
+  transition: transform 0.4s var(--ease);
+}
+
+.card-slideshow__slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Smaller than the homepage nav buttons — these sit inside a
+   compact card rather than a full-width banner. */
+.card-slideshow__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.9rem;
+  height: 1.9rem;
+  border: none;
+  border-radius: 50%;
+  background: rgba(22, 17, 26, 0.55);
+  color: var(--color-text);
+  font-size: 1.1rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: background 0.2s var(--ease), opacity 0.2s var(--ease);
+}
+
+/* Arrows stay hidden until the card is hovered/focused, so a grid
+   full of cards doesn't look cluttered with controls all at once. */
+.project-card:hover .card-slideshow__nav,
+.project-card:focus-within .card-slideshow__nav {
+  opacity: 1;
+}
+
+.card-slideshow__nav:hover { background: rgba(22, 17, 26, 0.8); }
+.card-slideshow__nav--prev { left: 0.5rem; }
+.card-slideshow__nav--next { right: 0.5rem; }
+
+.card-slideshow__dots {
+  position: absolute;
+  bottom: 0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.4rem;
+}
+
+.card-slideshow__dot {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  transition: background 0.2s var(--ease);
+}
+
+.card-slideshow__dot.is-active {
+  background: var(--color-accent);
+}
+
+/* A card with only one slide gets no controls at all — script.js
+   adds this class in that case so nothing empty is left showing. */
+.card-slideshow.has-single-slide .card-slideshow__nav,
+.card-slideshow.has-single-slide .card-slideshow__dots {
+  display: none;
 }
